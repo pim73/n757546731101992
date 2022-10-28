@@ -13,5 +13,19 @@
 <a href="index.html">Powrót</a>
 </p>
 
+<div id="Programowanie-Skrypt shell sprawdzający agendę na zadany dzień"><h2 id="Skrypt shell sprawdzający agendę na zadany dzień" class="header"><a href="#Programowanie-Skrypt shell sprawdzający agendę na zadany dzień">Skrypt shell sprawdzający agendę na zadany dzień</a></h2></div>
+
+<pre shell>
+
+#!/bin/bash
+ cal
+ echo "========================================"
+ read -p "Wpisz datę w formacie ISO lub wyrażenie jakiego szukasz: " val
+ echo "----------------------------------------"
+ echo "Twoje zaplanowane spotkania oraz zadania na ${val}:"
+ rg -i ${val} ~/Dropbox/Notatnik/diary.txt ~/Dropbox/Notatnik/*.taskpaper
+
+</pre>
+
 </body>
 </html>
