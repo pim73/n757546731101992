@@ -16,22 +16,24 @@
 <div id="Programowanie-Skrypt shell sprawdzający agendę na zadany dzień"><h2 id="Skrypt shell sprawdzający agendę na zadany dzień" class="header"><a href="#Programowanie-Skrypt shell sprawdzający agendę na zadany dzień">Skrypt shell sprawdzający agendę na zadany dzień</a></h2></div>
 
 <pre shell>
-
 #!/bin/bash
- read -p "Jaki miesiąc Cię interesuje? Podaj numer: " mon
- cal -m ${mon}
- echo "========================================"
- read -p "Wpisz datę w formacie ISO lub wyrażenie jakiego szukasz: " val
- echo "----------------------------------------"
- echo "Twoje zaplanowane spotkania oraz zadania na ${val}:"
- rg -i ${val} ~/Dropbox/Notatnik/diary.txt ~/Dropbox/Notatnik/*.taskpaper
-
+read -p "Jaki miesiąc Cię interesuje? Podaj numer: " mon
+if [ -z "$mon" ]
+then cal
+else
+cal -m ${mon}
+fi
+echo "========================================"
+read -p "Wpisz datę w formacie ISO lub wyrażenie jakiego szukasz: " val
+echo "----------------------------------------"
+echo "Twoje zaplanowane spotkania oraz zadania na ${val}:"
+rg -i ${val} ~/Dropbox/Notatnik/diary.txt ~/Dropbox/Notatnik/*.taskpaper
 </pre>
 
 <div id="Programowanie-Skrypt shell sprawdzający agendę na zadany dzień-Wyjaśnienie"><h3 id="Wyjaśnienie" class="header"><a href="#Programowanie-Skrypt shell sprawdzający agendę na zadany dzień-Wyjaśnienie">Wyjaśnienie</a></h3></div>
 <ol>
 <li>
-Uruchomienie kalendarza w terminalu (zadany miesiąc)
+Uruchomienie kalendarza w terminalu (zadany miesiąc, jeżeli wartość jest pusta, to pokazuje bieżący)
 
 <li>
 Wpisuje podwójną linię
