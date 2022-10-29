@@ -18,7 +18,8 @@
 <pre shell>
 
 #!/bin/bash
- cal
+ read -p "Jaki miesiąc Cię interesuje? Podaj numer: " mon
+ cal -m ${mon}
  echo "========================================"
  read -p "Wpisz datę w formacie ISO lub wyrażenie jakiego szukasz: " val
  echo "----------------------------------------"
@@ -30,7 +31,7 @@
 <div id="Programowanie-Skrypt shell sprawdzający agendę na zadany dzień-Wyjaśnienie"><h3 id="Wyjaśnienie" class="header"><a href="#Programowanie-Skrypt shell sprawdzający agendę na zadany dzień-Wyjaśnienie">Wyjaśnienie</a></h3></div>
 <ol>
 <li>
-Uruchomienie kalendarza w terminalu (bieżący miesiąc)
+Uruchomienie kalendarza w terminalu (zadany miesiąc)
 
 <li>
 Wpisuje podwójną linię
