@@ -23,13 +23,15 @@
 <dt>Kopiowanie do systemowego bufora w VIM</dt>
 <dd><code>"*y</code></dd>
 <dt>Kasowanie zakresu linii w VIM</dt>
-<dd><code>5,9d</code> skasowanie linii pd 5 do 9</dd>
+<dd><code>:5,9d</code> skasowanie linii pd 5 do 9</dd>
 <dt>Wpisanie wyniku komendy do edytowanego pliku</dt>
 <dd><code>r! komenda</code>. Na przykład <code>r! cal</code> wpisze kalendarz na bieżący miesiąc</dd>
 <dt>Numerowanie istniejących linii tekstu</dt>
 <dd><code>:let i=1 | g/^/s//\=i.' '/ | let i=i+1</code></dd>
 <dt>Numerownia pustych linii</dt>
 <dd><code>:put =range(1,10)</code></dd>
+<dt>Sortowanie linii w VIM</dt>
+<dd>W Visual Mode zaznaczam linie, które chce sortować, następnie <code>:,sort</code></dd>
 </dl>
 
 </body>
