@@ -20,8 +20,10 @@
 <dd>:ab wpisane_słowo zamienia_na</dd>
 <dt>Kopiowanie do systemowego bufora w VIM</dt>
 <dd><code>"*y</code></dd>
-<dt>Numerowanie istniejących linii tekstu</dt>
-<dd><code>:let i=1 | g/^/s//\=i.' '/ | let i=i+1</code></dd>
+<dt>Numerowanie istniejących wszystkich linii tekstu</dt>
+<dd><code>:%!nl -ba</code></dd>
+<dt>Numerowanie zakresu linii tekstu</dt>
+<dd>Najpierw <code>V</code> czyli visual line potem powyższą komendę, co wygląda tak <code>:'&lt;,'&gt;!nl -ba</code></dd>
 <dt>Numerownia pustych linii</dt>
 <dd><code>:put =range(1,10)</code></dd>
 <dt>Sortowanie linii w VIM</dt>
