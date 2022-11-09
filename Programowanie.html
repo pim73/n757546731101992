@@ -49,5 +49,80 @@ Za pomocą <code>rgrep</code> wyszukuje wpisaną wartość w plika <code>diary.t
 
 </ol>
 
+<div id="Programowanie-Skrypt dla Drafts. Download i Upload na podstawie Fileline"><h2 id="Skrypt dla Drafts. Download i Upload na podstawie Fileline" class="header"><a href="#Programowanie-Skrypt dla Drafts. Download i Upload na podstawie Fileline">Skrypt dla Drafts. Download i Upload na podstawie Fileline</a></h2></div>
+
+<p>
+Download
+</p>
+
+<pre  javascript>
+
+// Get Dropbox path from dbox: file line in draft
+// and save the draft to that file.
+
+  var d = draft.content;
+
+// Regex for fileline.
+ var fileRE = /dbox:(.+)$/m;
+
+ if (fileRE.test(d)) {
+   // Set the path. Add a slash to the front if I forgot.
+   var fileline = d.match(fileRE);
+   var flStart = d.search(fileRE);
+   var path = fileline[1];
+   if (path[0] != '/') {
+     path = '/' + path;
+     editor.setTextInRange(flStart + 5, 0, '/');
+   }
+   // Save the draft to the specified file.
+   var db = Dropbox.create();
+   var check = db.write(path, draft.content, "overwrite");
+   if (!check) {
+     alert("Couldn't save to " + path);
+   }
+ } else {
+   alert("No dbox line");
+ }
+
+</pre>
+
+<p>
+Upload
+</p>
+
+<pre javascript>
+// Get Dropbox path from dbox: file line in draft
+ // and replace draft with that file.
+
+ var d = draft.content;
+
+ // Regex for fileline.
+ var fileRE = /dbox:(.+)$/m;
+
+ if (fileRE.test(d)) {
+   // Set the path. Add a slash to the front if I forgot.
+   var fileline = d.match(fileRE);
+   var path = fileline[1];
+   if (path[0] != '/') {
+     path = '/' + path;
+   }
+   // Download file and replace the current draft.
+   var db = Dropbox.create();
+   var txt = db.read(path);
+   editor.setText(txt);
+ } else {
+   alert("No dbox line");
+ }
+
+</pre>
+
+<p>
+Fileline wygląda tak:
+</p>
+
+<p>
+<code>dbox:/Notatnik/plik.txt</code>
+</p>
+
 </body>
 </html>
